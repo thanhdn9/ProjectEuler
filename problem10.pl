@@ -24,16 +24,13 @@ sub is_prime($) {
     return 1;
 }
 
-my $count = 0;
-
+my $max = 2 * 10**6;
 my $num = 1;
+my $sum = 2;
 
-while (1) {
-    $count += 1 if &is_prime($num);
-    if ($count == 10001) {
-        say $num;
-        exit;    
-    }
-    $num += 1;
+while ($num < $max) {
+    $num += 2;
+    $sum += $num if &is_prime($num);    
 }
 
+say $sum;
