@@ -2,6 +2,8 @@
 
 use v5.14;
 use List::Util qw(sum);
+use Memoize;
+memoize('gen_fib_list');
 
 my @list = (1, 2);
 
