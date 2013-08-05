@@ -2,23 +2,46 @@
 
 use v5.14;
 use List::Util qw(sum);
-use Memoize;
-memoize('gen_fib_list');
 
-my @list = (1, 2);
+sub gen_cache_closure {
+    my ($calc_element, @cache) = @_;
 
-sub gen_fib_list {
-    my ($max, $list) = @_;
-    my $fib = $list->[-2] + $list[-1];
+    return sub {
+        my $item = shift;
+        
+        $calc_element->($item, \@cache)
+            unless $item < @cache;
 
-    return unless $fib < $max;
-
-    push(@$list, $fib);
-    &gen_fib_list;
+        return $cache[$item];
+    };
 }
 
-gen_fib_list(4000000, \@list);
+sub gen_fib {
+    my @fibs = (0, 1, 1);
 
-@list = grep $_ % 2 == 0, @list;
+    return gen_cache_closure(
+        sub {
+            my ($item, $fibs) = @_;
 
-say sum(@list);
+            for my $calc ((@fibs - 1) .. $item) {
+                $fibs->[$calc] = $fibs->[$calc - 2]
+                               + $fibs->[$calc - 1]
+            }
+        },
+        @fibs
+    );
+}
+
+my @fibs;
+my $n = 1;
+my $fib = gen_fib->($n);
+
+while ($fib < 4000000) {
+    push @fibs, $fib;
+    $n += 1;
+    $fib = gen_fib->($n);
+}
+
+@fibs = grep $_ % 2 == 0, @fibs;
+
+say sum(@fibs);
