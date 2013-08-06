@@ -15,7 +15,7 @@ for (my $i = 999; $i > 99; $i--) {
         my $tmp = $i * $j;
         last unless $tmp > $num;
 
-        if ($tmp > $num and &is_palindrome($tmp)) {
+        if ($tmp > $num and is_palindrome($tmp)) {
             $num = $tmp;    
             say $i;
             say $j;

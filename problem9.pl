@@ -14,7 +14,7 @@ my $max = 1000;
 foreach my $i (1 .. ($max/2)) {
     foreach my $j (1 .. ($max/2)) {
         my $k = $max - ($i + $j);
-        if (&is_triangle($i, $j, $k)) {
+        if (is_triangle($i, $j, $k)) {
             say $i*$j*$k;
             exit;    
         }    

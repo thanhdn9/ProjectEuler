@@ -13,4 +13,4 @@ sub max_factor($) {
     return $max
 }
 
-say &max_factor(600851475143);
+say max_factor(600851475143);

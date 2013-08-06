@@ -117,4 +117,4 @@ sub f10() {
     return substr "$sum", 0, 10;
 }
 
-say &f10(\@nums);
+say f10(\@nums);

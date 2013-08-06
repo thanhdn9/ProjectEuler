@@ -10,4 +10,4 @@ sub fact() {
     return $num * &fact($num - 1);   
 }
 
-say &fact(2*$num) / (&fact($num)**2);
+say fact(2*$num) / (fact($num)**2);

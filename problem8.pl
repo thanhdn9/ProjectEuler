@@ -20,7 +20,7 @@ while ($i < 996) {
 }
 
 say $max;
-#
+
 #say max map {
 #    reduce { $a * $b } unpack "x${_}(A)5", $seq;    
 #} 0..length($seq) - 5

@@ -17,6 +17,6 @@ sub sum_square() {
 }
 
 my $sum = sum(1..100);
-my $sum_sqr = &sum_square();
+my $sum_sqr = sum_square();
 
 say $sum ** 2 - $sum_sqr;

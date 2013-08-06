@@ -29,7 +29,7 @@ my $count = 0;
 my $num = 1;
 
 while (1) {
-    $count += 1 if &is_prime($num);
+    $count += 1 if is_prime($num);
     if ($count == 10001) {
         say $num;
         exit;    

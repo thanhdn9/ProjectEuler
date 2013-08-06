@@ -30,7 +30,7 @@ my $sum = 2;
 
 while ($num < $max) {
     $num += 2;
-    $sum += $num if &is_prime($num);    
+    $sum += $num if is_prime($num);    
 }
 
 say $sum;
