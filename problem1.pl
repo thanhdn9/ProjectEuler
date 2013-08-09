@@ -1,15 +1,8 @@
 #!/usr/bin/perl
 
 use v5.14;
+use List::Util qw(sum reduce);
 
-my $num = 1;
-my $total = 0;
+my @list = grep { $_ if $_ % 3 == 0 or $_ % 5 == 0 } 1 .. 999;
 
-while ($num < 1000) {
-    if ( ($num % 3 == 0) or ($num % 5 == 0) ) {
-        $total += $num;    
-    }
-    $num++
-}
-
-say $total;
+say sum(@list);
