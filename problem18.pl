@@ -37,3 +37,4 @@ for (my $n = $#triangle; $n > 0; $n--) {
 }
 
 say $triangle[0][0];
+

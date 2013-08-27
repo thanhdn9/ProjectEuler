@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 use v5.14;
-use Date::Calc qw(Day_of_Week check_date);
+use Date::Calc qw(Day_of_Week);
 
 my $num_Sun = 0;
 
