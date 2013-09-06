@@ -2,35 +2,27 @@
 
 use v5.14;
 
-sub is_prime($) {
-    my $n = shift;
-
-            given ($n) {
-                when (1)            { return 0; }
-                when ($n < 4)       { return 1; }
-                when ($n % 2 == 0)  { return 0; }
-                when ($n < 9)       { return 1; }
-                when ($n % 3 == 0)  { return 0; }
-                }
-
-    my $i = int (sqrt($n));
-    my $j = 5;
-
-    while ($j <= $i) {
-        return 0 if ($n % $j == 0);
-        return 0 if ($n % ($j + 2) == 0);
-            $j += 6;
-    }
-    return 1;
+sub eratosthenes {
+   my %D;
+   my $q = 2;
+   return sub {
+      while (defined(my $p = delete $D{$q})) {
+         my $x = $p + $q;
+         $x += $p while exists $D{$x};
+         $D{$x} = $p;
+         ++$q;
+      }
+      $D{$q * $q} = $q;
+      return $q++;
+   };
 }
 
-my $max = 2 * 10**6;
-my $num = 1;
-my $sum = 2;
+my $era = eratosthenes();
+my $num;
+my $sum;
 
-while ($num < $max) {
-    $num += 2;
-    $sum += $num if is_prime($num);    
+while (($num = $era->()) < (2 * 10**6)) {
+    $sum += $num;    
 }
 
 say $sum;
