@@ -6,7 +6,7 @@ my @coeff_primes = sieve(1000, 0);
 my @quad_primes = sieve(10000, 1);
 
 my $find = "";
-my @test = grep (vec($find, $_, 1) = 1, @quad_primes);
+my @test = grep(vec($find, $_, 1) = 1, @quad_primes);
 
 undef @quad_primes;
 
