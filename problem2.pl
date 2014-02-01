@@ -23,7 +23,7 @@ sub gen_fib {
         sub {
             my ($item, $fibs) = @_;
 
-            for my $calc ((@fibs - 1) .. $item) {
+            for my $calc ((@$fibs - 1) .. $item) {
                 $fibs->[$calc] = $fibs->[$calc - 2]
                                + $fibs->[$calc - 1]
             }
